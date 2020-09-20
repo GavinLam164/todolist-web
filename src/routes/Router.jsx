@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import TodoAdd from "./TodoAdd";
-import TodoList from "./TodoList";
+import TodoAdd from "./todo/TodoAdd";
+import TodoList from "./todo/TodoList";
+import TodoEdit from "./todo/TodoEdit";
 
 const routes = [
   {
@@ -11,6 +12,10 @@ const routes = [
   {
     path: "/todo/add",
     component: TodoAdd,
+  },
+  {
+    path: "/todo/edit/:id",
+    component: TodoEdit,
   },
 ];
 
