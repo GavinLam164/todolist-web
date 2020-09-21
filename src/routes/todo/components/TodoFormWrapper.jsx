@@ -23,7 +23,6 @@ class TodoFormWrapper extends React.Component {
   }
 
   validate = () => {
-    console.log(this.props);
     this.form.current.validateFields(async (err, value) => {
       if (err) return;
       await this.props.onSubmit(value);
@@ -34,13 +33,14 @@ class TodoFormWrapper extends React.Component {
   };
 
   render() {
+    const { btnText = "添加" } = this.props;
     return (
       <Fragment>
         <TodoForm ref={this.form} />
         <WhiteSpace />
         <WingBlank>
           <Button type="primary" onClick={this.validate}>
-            添加
+            {btnText}
           </Button>
         </WingBlank>
       </Fragment>

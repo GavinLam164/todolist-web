@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TodoAdd from "./todo/TodoAdd";
 import TodoList from "./todo/TodoList";
 import TodoEdit from "./todo/TodoEdit";
+import UserRegister from "./user/UserRegister";
+import UserLogin from "./user/UserLogin";
 
 const routes = [
   {
@@ -16,6 +18,14 @@ const routes = [
   {
     path: "/todo/edit/:id",
     component: TodoEdit,
+  },
+  {
+    path: "/user/register",
+    component: UserRegister,
+  },
+  {
+    path: "/user/login",
+    component: UserLogin,
   },
 ];
 

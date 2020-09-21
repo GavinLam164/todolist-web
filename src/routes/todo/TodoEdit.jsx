@@ -1,32 +1,28 @@
-import React, { Component } from "react";
+import React, { useCallback } from "react";
+import { withRouter } from "react-router-dom";
 import { find, update } from "@/api/todo";
 import Layout from "@/layouts/Layout";
 import TodoFormWrapper from "./components/TodoFormWrapper";
 
-export default class TodoEdit extends Component {
-  getId = () => {
-    return this.props.match.params.id;
-  };
-
-  initForm = async () => {
+const TodoEdit = ({ match }) => {
+  const id = match.params.id;
+  const initForm = useCallback(async () => {
     const res = await find({
-      id: this.getId(),
+      id,
     });
     return res;
-  };
-
-  onSubmit = async (value) => {
+  }, []);
+  const onSubmit = useCallback(async (value) => {
     await update({
-      id: this.getId(),
+      id,
       ...value,
     });
-  };
+  }, []);
+  return (
+    <Layout title="待办事项" back>
+      <TodoFormWrapper initForm={initForm} onSubmit={onSubmit} btnText="更新" />
+    </Layout>
+  );
+};
 
-  render() {
-    return (
-      <Layout title="待办事项">
-        <TodoFormWrapper initForm={this.initForm} onSubmit={this.onSubmit} />
-      </Layout>
-    );
-  }
-}
+export default withRouter(TodoEdit);
