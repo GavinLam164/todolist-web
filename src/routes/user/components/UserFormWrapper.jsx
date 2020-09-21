@@ -1,21 +1,37 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import Layout from "@/layouts/Layout";
+import { withRouter } from "react-router-dom";
 import UserForm from "./UserForm";
-import { WhiteSpace, WingBlank, Button } from "antd-mobile";
+import { WhiteSpace, WingBlank, Button, Toast } from "antd-mobile";
 
-export default class UserFormWrapper extends Component {
-  validate = () => {};
+class UserFormWrapper extends Component {
+  constructor(props) {
+    super(props);
+    this.form = createRef();
+  }
+  validate = () => {
+    this.form.current.validateFields(async (err, value) => {
+      if (err) return;
+      if (value.gender) {
+        value.gender = value.gender[0];
+      }
+      await this.props.onSubmit(value);
+    });
+  };
   render() {
+    const { title, isRegister } = this.props;
     return (
-      <Layout title="登录">
-        <UserForm />
+      <Layout title={title}>
+        <UserForm ref={this.form} isRegister={isRegister} />
         <WhiteSpace />
         <WingBlank>
           <Button type="primary" onClick={this.validate}>
-            登录
+            {title}
           </Button>
         </WingBlank>
       </Layout>
     );
   }
 }
+
+export default withRouter(UserFormWrapper);

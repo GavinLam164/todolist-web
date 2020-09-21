@@ -1,4 +1,4 @@
-import React, { Fragment, createRef } from "react";
+import React, { createRef, Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import { Button, WingBlank, WhiteSpace, Toast } from "antd-mobile";
 import TodoForm from "./TodoForm";
@@ -33,7 +33,7 @@ class TodoFormWrapper extends React.Component {
   };
 
   render() {
-    const { btnText = "添加" } = this.props;
+    const { btnText } = this.props;
     return (
       <Fragment>
         <TodoForm ref={this.form} />
