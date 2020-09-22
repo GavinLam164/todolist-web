@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, Fragment } from "react";
 import {
   List,
-  Icon,
   Checkbox,
   Modal,
   WhiteSpace,
@@ -20,10 +19,8 @@ export default ({ history }) => {
   const [isDeleted, setDeleted] = useState(false);
   const [selectIds, setSelectIds] = useState([]);
 
-  console.log(selectIds);
   const updateSelectId = useCallback(
     (isSelected, id) => {
-      console.log(selectIds);
       if (isSelected) {
         setSelectIds(selectIds.concat([id]));
       } else {
@@ -56,6 +53,8 @@ export default ({ history }) => {
             ids: selectIds.join(","),
           });
           setSelectIds([]);
+          setDeleted(false);
+          loadList();
         },
       },
     ]);
@@ -82,11 +81,16 @@ export default ({ history }) => {
         title="待办事项"
         rightContent={[
           <i
-            class="iconfont icon-add-select"
+            key={0}
+            className="iconfont icon-add-select"
             onClick={toAdd}
             style={{ marginRight: "10px" }}
           ></i>,
-          <i class="iconfont icon-sami-select" onClick={toggleDeleted}></i>,
+          <i
+            key={1}
+            className="iconfont icon-sami-select"
+            onClick={toggleDeleted}
+          ></i>,
         ]}
       >
         <List>

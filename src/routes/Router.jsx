@@ -5,6 +5,8 @@ import TodoList from "./todo/TodoList";
 import TodoEdit from "./todo/TodoEdit";
 import UserRegister from "./user/UserRegister";
 import UserLogin from "./user/UserLogin";
+import TodayList from "./today/TodayList";
+import TodayDetail from "./today/TodayDetail";
 
 const routes = [
   {
@@ -18,6 +20,14 @@ const routes = [
   {
     path: "/todo/edit/:id",
     component: TodoEdit,
+  },
+  {
+    path: "/today/list",
+    component: TodayList,
+  },
+  {
+    path: "/today/detail/:id",
+    component: TodayDetail,
   },
   {
     path: "/user/register",
