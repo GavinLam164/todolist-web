@@ -52,6 +52,7 @@ class UserForm extends Component {
           手机号
         </InputItem>
         <InputItem
+          type="password"
           {...getFieldProps("password", {
             rules: [{ required: true }],
           })}

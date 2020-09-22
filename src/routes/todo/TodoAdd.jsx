@@ -5,7 +5,9 @@ import TodoFormWrapper from "./components/TodoFormWrapper";
 
 export default () => {
   const onSubmit = useCallback(async (value) => {
-    await add(value);
+    await add({
+      ...value,
+    });
   }, []);
   return (
     <Layout title="待办事项" back>
