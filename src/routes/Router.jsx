@@ -7,6 +7,7 @@ import UserRegister from "./user/UserRegister";
 import UserLogin from "./user/UserLogin";
 import TodayList from "./today/TodayList";
 import TodayDetail from "./today/TodayDetail";
+import CostAdd from "./today/CostAdd";
 
 const routes = [
   {
@@ -28,6 +29,10 @@ const routes = [
   {
     path: "/today/detail/:id",
     component: TodayDetail,
+  },
+  {
+    path: "/today/costAdd/:id",
+    component: CostAdd,
   },
   {
     path: "/user/register",
