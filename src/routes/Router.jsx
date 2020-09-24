@@ -32,7 +32,7 @@ const routes = [
         component: TodayDetail,
     },
     {
-        path: "/today/costAdd/:id",
+        path: "/today/costAdd/:record_id/:todo_id",
         component: CostAdd,
     },
     {

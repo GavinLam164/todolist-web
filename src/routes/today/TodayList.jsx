@@ -34,13 +34,13 @@ export default () => {
             back
         >
             <List>
-                {recordList.map(({ id, todo_name, hours, total_cost }) => (
+                {recordList.map(({ id, todo_id, todo_name, hours, total_cost }) => (
                     <Item
                         key={id}
                         arrow="horizontal"
                         extra={[
                             `${total_cost}/${hours}`,
-                            total_cost === hours && <span key={1}>（已完成)</span>,
+                            total_cost >= hours && <span key={1}>（已完成)</span>,
                         ]}
                         onClick={() => history.push(`/today/detail/${id}`)}
                     >
